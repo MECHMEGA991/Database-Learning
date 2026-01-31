@@ -1,4 +1,4 @@
-import database2
+import Sqlite3.database2 as database2
 
 
 # ADD_ONE data into the database2
