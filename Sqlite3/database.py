@@ -27,55 +27,55 @@ c.execute(""" CREATE TABLE IF NOT EXISTS customer(
 
 #Insert Many customer details once
 
-# many_customer =[
-# 					('ALice','Brown','alice7@gmail.com'),
-# 					('Steph','Hawkins','steph54@gmail.com'),
-# 					('Dan','Pers','dan11@gamil.com'),
-# 				]
+many_customer =[
+					('ALice','Brown','alice7@gmail.com'),
+					('Steph','Hawkins','steph54@gmail.com'),
+					('Dan','Pers','dan11@gamil.com'),
+				]
 
-# c.execute("""INSERT INTO customer(first_name, last_name, email) 
-# 	Values ('Rohan','mehta','rohan05@gmail.com')""")
+c.execute("""INSERT INTO customer(first_name, last_name, email) 
+	Values ('Rohan','mehta','rohan05@gmail.com')""")
 
-# c.executemany("INSERT INTO customer Values(?,?,?)",many_customer)
+c.executemany("INSERT INTO customer Values(?,?,?)",many_customer)
 
 # Query The database and Fectch
 
-# c.execute("SELECT * FROM customer")
-# print(c.fetchone())
-# print(c.fetchone()[0]) # U can access specific 
-# print(c.fetchmany(3))
+c.execute("SELECT * FROM customer")
+print(c.fetchone())
+print(c.fetchone()[0]) # U can access specific 
+print(c.fetchmany(3))
 
-# print(c.fetchall()[0]) # It will fetch first tuple
+print(c.fetchall()[0]) # It will fetch first tuple
 
 # using loop
 
-# items=c.fetchall()
+items=c.fetchall()
 
-# for i in items:
-# 	print(i)
+for i in items:
+	print(i)
 
 
-# for i in items:
-# 	print(i[0]+" "+ i[1] +"\t\t"+ i[2])
+for i in items:
+	print(i[0]+" "+ i[1] +"\t\t"+ i[2])
 
 # Primary Id
 
-# c.execute("SELECT rowid, * FROM customer")
-# items=c.fetchall()
+c.execute("SELECT rowid, * FROM customer")
+items=c.fetchall()
 
-# for i in items:
-# 	print(i)
+for i in items:
+	print(i)
 
 # WHERE Clause
 
-# c.execute("SELECT * FROM customer where email LIKE '%@gmail.com'")
-# c.execute("SELECT * FROM customer where first_name LIKE '%alice'")
-# c.execute("SELECT * FROM customer where last_name LIKE '%snow'")
+c.execute("SELECT * FROM customer where email LIKE '%@gmail.com'")
+c.execute("SELECT * FROM customer where first_name LIKE '%alice'")
+c.execute("SELECT * FROM customer where last_name LIKE '%snow'")
 
-# c.execute("SELECT * FROM customer where email LIKE '%alice7@gmail.com'")
-# items=c.fetchall()
-# for i in items:
-# 	print(i)
+c.execute("SELECT * FROM customer where email LIKE '%alice7@gmail.com'")
+items=c.fetchall()
+for i in items:
+	print(i)
 
 
 
@@ -84,72 +84,72 @@ print("command executed succesfully")
 
 # UPDATE Records
 
-# c.execute("""
-# 		UPDATE customer SET first_name ='Tarak'
-# 			where last_name ='mehta'
-# 	""")
+c.execute("""
+		UPDATE customer SET first_name ='Tarak'
+			where last_name ='mehta'
+	""")
 
 # Instead of this we use rowid
 
 
-# c.execute("""
-# 		UPDATE customer SET first_name ='Tarak'
-# 			where rowid=3
-# 	""")
+c.execute("""
+		UPDATE customer SET first_name ='Tarak'
+			where rowid=3
+	""")
 
 
-# conn.commit()
-# c.execute("SELECT rowid, * FROM customer")
-# # c.execute("SELECT * FROM customer")
-# item=c.fetchall()
-# for i in item:
-# 	print(i)
+conn.commit()
+c.execute("SELECT rowid, * FROM customer")
+c.execute("SELECT * FROM customer")
+item=c.fetchall()
+for i in item:
+	print(i)
 
 
 # DELETE Records
 
-# c.execute("DELETE from customer WHERE rowid=7")
+c.execute("DELETE from customer WHERE rowid=7")
 
-# conn.commit
+conn.commit
 
-# c.execute("SELECT rowid , * FROM customer")
+c.execute("SELECT rowid , * FROM customer")
 
-# item=c.fetchall()
+item=c.fetchall()
 
-# for i in item:
-# 	print(i)
+for i in item:
+	print(i)
 
 # ORDER BY -by default ASC
 
-# c.execute("SELECT rowid, * FROM customer order by rowid DESC")
-# c.execute("SELECT rowid, * FROM customer order by first_name ASC")
+c.execute("SELECT rowid, * FROM customer order by rowid DESC")
+c.execute("SELECT rowid, * FROM customer order by first_name ASC")
 
-# item=c.fetchall()
-# for i in item:
-# 	print(i)
+item=c.fetchall()
+for i in item:
+	print(i)
 
 # AND / OR
 
-# c.execute("SELECT rowid,* FROM customer where last_name like 'Bro%' and rowid=5 ")
-# c.execute("SELECT rowid,* FROM customer where last_name like 'Bro%' or rowid=5 ")
+c.execute("SELECT rowid,* FROM customer where last_name like 'Bro%' and rowid=5 ")
+c.execute("SELECT rowid,* FROM customer where last_name like 'Bro%' or rowid=5 ")
 
-# item =c.fetchall()
-# for i in item:
-# 	print(i)
+item =c.fetchall()
+for i in item:
+	print(i)
 
 # LIMITING Result
 
-# c.execute("SELECT rowid,* FROM customer limit 1 offset 1")
-# c.execute("SELECT rowid,* FROM customer order by rowid ASC limit 1 offset 1") # SECOND highest by using offset
+c.execute("SELECT rowid,* FROM customer limit 1 offset 1")
+c.execute("SELECT rowid,* FROM customer order by rowid ASC limit 1 offset 1") # SECOND highest by using offset
 
-# item =c.fetchall()
-# for i in item :
-# 	print(i)
+item =c.fetchall()
+for i in item :
+	print(i)
 
 # DROP TABLE
 
-# c.execute("DROP TABLE customer")
-# conn.commit
+c.execute("DROP TABLE customer")
+conn.commit
 
 
 # Commit our command
